@@ -183,6 +183,9 @@ if ($kiekis > 1000 && $kiekis < 2000) {
 if ($kiekis > 2000) {
     echo "Kiekis: ".$kiekis. "<br>"."Kaina: ".($kiekis * 0.96);
 }
+if ($kiekis <= 1000) {
+    echo "Kiekis: ".$kiekis. "<br>"."Kaina: ".($kiekis * $kaina);
+}
 echo "<br><br>";
 ?>
 
@@ -228,6 +231,16 @@ $minutes = rand(0, 59);
 $sekundes = rand(0, 59);
 $papild = rand(0, 300);
 
+if ($valandos < 10) {
+    $valandos = sprintf("%02d", $valandos);
+}
+if ($minutes < 10) {
+    $minutes = sprintf("%02d", $minutes);
+}
+if ($sekundes < 10) {
+    $sekundes = sprintf("%02d", $sekundes);
+}
+
 echo $valandos, ":", $minutes, ":", $sekundes, "<br>", $papild, "<br>";
 $laikas = $sekundes + ($minutes * 60) + ($valandos * 60 * 60);
 $laikas += $papild;
@@ -237,6 +250,16 @@ if ($laikas >= 86399) {
 $valandos = floor($laikas / 60 / 60);
 $minutes = floor(($laikas - ($valandos * 60 * 60)) / 60);
 $sekundes = ($laikas - ($valandos * 60 * 60) - ($minutes * 60));
+
+if ($valandos < 10) {
+    $valandos = sprintf("%02d", $valandos);
+}
+if ($minutes < 10) {
+    $minutes = sprintf("%02d", $minutes);
+}
+if ($sekundes < 10) {
+    $sekundes = sprintf("%02d", $sekundes);
+}
 
 echo $valandos, ":", $minutes, ":", $sekundes, "<br>";
 
