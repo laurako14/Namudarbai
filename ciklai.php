@@ -1,4 +1,4 @@
-<!-- <?php 
+<?php 
 echo "1. --------------", "<br>";
 $linija = str_repeat("*", 400);
 echo "<p style='word-wrap: break-word;'>". $linija. "</p>";
@@ -63,7 +63,7 @@ for ($i = 0; $i < 25; $i++) {
     echo "<br>";
 }
 echo '<br><br>';
-?> -->
+?>
 
 <?php 
 echo "6. --------------", "<br>";
@@ -155,18 +155,18 @@ echo '<br><br>';
 echo "9. --------------", "<br>";
 $c = "10 bezdzioniu \n suvalge 20 bananu.";
 $s = '10 bezdzioniu \n suvalge 20 bananu.';
-$a = microtime();
+$a = microtime(true);
 for ($i = 0; $i < 1000000; $i++) {
     $c;
 }
-$b = microtime();
-echo (float) $duration = $b - $a;
-$d = microtime();
+$b = microtime(true);
+echo $duration = $b - $a, "<br>", "Stringas su dvigubom kabutem", "<br>";
+$d = microtime(true);
 for ($i = 0; $i < 1000000; $i++) {
     $s;
 }
-$e = microtime();
-echo (float) $duration = $e - $d;
+$e = microtime(true);
+echo $duration = $e - $d, "<br>", "Stringas su viengubom kabutem", "<br>";
 echo '<br><br>';
 ?>
 
@@ -195,7 +195,7 @@ echo "5 vinys ikalti $count dideliais smugiais";
 echo '<br><br>';
 ?>
 
-<?php 
+<!-- <?php 
 echo "11. --------------", "<br>";
 $string = "";
 for ($i = 0; $i < 150; $i++) {
@@ -212,10 +212,12 @@ for ($i = 0; $i < 150; $i++) {
 echo $string;
 $string2 = "";
 for ($i = 0; $i < strlen($string); $i++) {
-    if ((int) $string[$i] % (int) $string[$i] == 0) {
+    $lyginamas = (int) $string[$i];
+    echo $lyginamas;
+    if ($lyginamas % $lyginamas == 0) {
         $string2 .= $string[$i]." ";
     }
 }
 echo $string2;
 echo '<br><br>';
-?>
+?> -->
