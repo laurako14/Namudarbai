@@ -136,12 +136,89 @@ echo '<br><br>';
 echo "6. --------------", "<br>";
 $pirmas = [];
 $antras = [];
-for ($i = 0; $i < 100; $i++) {
-    array_push($pirmas, rand(100, 999));
+for ($i = 0; $i < 1000; $i++) {
+    $naujas = rand(100, 999);
+    if (in_array($naujas, $pirmas)) {
+        continue;
+    } else {
+    array_push($pirmas, $naujas);
+    }
+    if (count($pirmas) == 100) {
+        break;
+    }
 }
-for ($i = 0; $i < 100; $i++) {
-    array_push($antras, rand(100, 999));
+for ($i = 0; $i < 1000; $i++) {
+    $naujas = rand(100, 999);
+    if (in_array($naujas, $antras)) {
+        continue;
+    } else {
+    array_push($antras, $naujas);
+    }
+    if (count($antras) == 100) {
+        break;
+    }
 }
+echo '<pre>';
+print_r($pirmas);
+echo '</pre>';
+echo '<pre>';
+print_r($antras);
+echo '</pre>';
+echo '<br><br>';
+?>
 
+<?php 
+echo "7. --------------", "<br>";
+$unikalus = [];
+for ($i = 0; $i < count($pirmas); $i++) {
+    if (!in_array($pirmas[$i], $antras)) {
+        array_push($unikalus, $pirmas[$i]);
+    }
+}
+echo '<pre>';
+print_r($unikalus);
+echo '</pre>';
+echo '<br><br>';
+?>
+
+<?php 
+echo "8. --------------", "<br>";
+$kartojasi = [];
+for ($i = 0; $i < count($pirmas); $i++) {
+    if (in_array($pirmas[$i], $antras)) {
+        array_push($kartojasi, $pirmas[$i]);
+    }
+}
+echo '<pre>';
+print_r($kartojasi);
+echo '</pre>';
+echo '<br><br>';
+?>
+
+<?php 
+echo "9. --------------", "<br>";
+$mix = [];
+for ($i = 0; $i < count($pirmas); $i++) {
+    $mix[$pirmas[$i]] = $antras[$i];
+}
+echo '<pre>';
+print_r($mix);
+echo '</pre>';
+echo '<br><br>';
+?>
+
+<?php 
+echo "10. --------------", "<br>";
+$fibanaci = [];
+for ($i = 0; $i < 10; $i++) {
+    if ($i < 2) {
+        $fibanaci[$i] = rand(5, 25);
+    } else {
+        $fibanaci[$i] = ($fibanaci[$i - 2] + $fibanaci[$i - 1]);
+    }
+}
+echo '<pre>';
+print_r($fibanaci);
+echo '</pre>';
 echo '<br><br>';
 ?>
