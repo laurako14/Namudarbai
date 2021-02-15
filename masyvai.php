@@ -124,6 +124,9 @@ $newArray = [];
 for ($i = 0; $i < 200; $i++) {
     array_push($newArray, ($pirmas[$i]. $antras[$i]. $trecias[$i]));
 }
+// echo '<pre>';
+// print_r($newArray);
+// echo '</pre>';
 echo '<pre>';
 // print_r(array_count_values($newArray));
 echo "Gauta ". count(array_count_values($newArray)). " unikaliu reiksmiu kombinaciju";
@@ -220,5 +223,55 @@ for ($i = 0; $i < 10; $i++) {
 echo '<pre>';
 print_r($fibanaci);
 echo '</pre>';
+echo '<br><br>';
+?>
+
+<?php 
+echo "11. --------------", "<br>";
+$array = [];
+for ($i = 0; $i < 1000; $i++) {
+    $naujas = rand(0, 300);
+    if (in_array($naujas, $array)) {
+        continue;
+    } else {
+    array_push($array, $naujas);
+    }
+    if (count($array) == 101) {
+        break;
+    }
+}
+sort($array);
+$newArray = [];
+// $newArray[50] = max($array);
+// echo $newArray[50];
+$x = 49;
+$y = 51;
+for ($i = 100; $i > 0; $i--) {
+    if ($i % 2 == 0) {
+        $newArray[$x] = $array[$i];
+        $x--;
+    } 
+    if ($i % 2 != 0) {
+        $newArray[$y] = $array[$i];
+        $y++;
+    }
+}
+$newArray[50] = max($array);
+echo '<pre>';
+print_r($newArray);
+echo '</pre>';
+ksort($newArray);
+echo '<pre>';
+print_r($newArray);
+echo '</pre>';
+$pirmaSuma = 0;
+$antraSuma = 0;
+for ($i = 0; $i < 49; $i++) {
+    $pirmaSuma += $newArray[$i];
+}
+for ($i = 51; $i < 100; $i++) {
+    $antraSuma += $newArray[$i];
+}
+echo $pirmaSuma, "<br>", $antraSuma;
 echo '<br><br>';
 ?>

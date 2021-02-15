@@ -22,7 +22,8 @@ for ($i = 0; $i < 300; $i++) {
         echo "<span> $genSk </span>";
     }
 }
-
+echo '<br><br>';
+echo "Didesniu nei 150: $did150";
 echo '<br><br>';
 ?>
 
@@ -113,10 +114,10 @@ $score1 = 0;
 $score2 = 0;
 while ($play) {
     if ($score1 >= 222) {
-        echo "Partija laimejo: $player1";
+        echo "Partija laimejo: $player1,".$player1.":".$score1.";".$player2.":".$score2;
         $play = false;
     } elseif ($score2 >= 222) {
-        echo "Partija laimejo: $player2";
+        echo "Partija laimejo: $player2,".$player1.":".$score1.";".$player2.":".$score2;
         $play = false;
     } else {
     $petrasTaskai = rand(10, 20);
@@ -210,12 +211,19 @@ for ($i = 0; $i < 150; $i++) {
     }
 }
 echo $string;
+$array = explode(" ", $string);
+echo '<pre>';
+print_r($array);
+echo '</pre>';
 $string2 = "";
-for ($i = 0; $i < strlen($string); $i++) {
-    $lyginamas = (int) $string[$i];
-    echo $lyginamas;
-    if ($lyginamas % $lyginamas == 0) {
-        $string2 .= $string[$i]." ";
+for ($i = 0, $x = 2; $i < count($array)-1, $x < 10; $i++, $x++) {
+    $nesidalina = true;
+    if ($array[$i] % $x == 0) {
+        $nesidalina = false;
+        break;
+    } 
+    if ($nesidalina) {
+        $string2 .= (int) $array[$i]." ";
     }
 }
 echo $string2;
