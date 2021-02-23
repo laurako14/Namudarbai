@@ -127,7 +127,11 @@ echo '<br><br>';
 echo "5. --------------", "<br>";
 $array = [];
 for ($i = 0; $i < 30; $i++) {
-    $array[$i] = ['user_id' => rand(1, 1000000), 'place_in_row' => rand(0, 100)];
+    $id = rand(1, 1000000);
+    while (in_array($id, array_column($array, 'user_id'))) {
+        $id = rand(1, 1000000);
+    }
+    $array[$i] = ['user_id' => $id, 'place_in_row' => rand(0, 100)];
 }
 echo '<pre>';
 print_r($array);
@@ -200,12 +204,26 @@ for ($i = 0; $i < 10; $i++) {
     }
 }
 echo $sum;
+function sortSum($a, $b) {
+    if (is_array($a)) {
+        $a = array_sum($a);
+    } 
+    if (is_array($b)) {
+        $b = array_sum($b);
+    }
+    if ($a == $b) return 0;
+    return ($a < $b) ? -1 : 1;
+}
+usort($array, 'sortSum');
+echo '<pre>';
+print_r($array);
+echo '</pre>';
 echo '<br><br>';
 ?>
 
 <?php 
 echo "10. --------------", "<br>";
-$simb = '#%+*@裡';
+$simb = ['#', '%', '+', '*', '@', '裡'];
 $array = [];
 for ($i = 0; $i < 10; $i++) {
     for ($j = 0; $j < 10; $j++) {
@@ -227,3 +245,24 @@ for ($i = 0; $i < 10; $i++) {
 }
 echo '<br><br>';
 ?>
+
+<!-- <?php 
+echo "11. --------------", "<br>";
+do {
+    $a = rand(0, 1000);
+    $b = rand(0, 1000);
+} while ($a == $b);
+$long = rand(10,30);
+$sk1 = $sk2 = 0;
+echo '<h3>Skaičiai '.$a.' ir '.$b.'</h3>';
+$c = [];
+for ($i=0; $i<$long; $i++) {
+    $c[] = array_rand(array_flip([$a, $b]));
+}
+echo '<h4>Masyvas:</h4>';
+echo '<pre>';
+print_r($c);
+echo '</pre>';
+
+echo '<br><br>';
+?> -->

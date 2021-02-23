@@ -2,10 +2,14 @@
 echo "1. --------------", "<br>";
 $array = [];
 for ($i = 0; $i < 30; $i++) {
-    array_push($array, rand(5, 25));
+    // array_push($array, rand(5, 25));
+    $array[] = rand(5, 25);
 }
+// foreach(range(1,30) as $val) {
+//     $array[] = rand(5, 25);
+// }
 echo '<pre>';
-print_r($array);
+_d($array);
 echo '</pre>';
 echo '<br><br>';
 ?>
@@ -29,13 +33,13 @@ echo "b) Didziausia masyvo reiksme: $didz". "<br>";
 echo "c) Visu reiksmiu suma: $sum". "<br>";
 $newArray = [];
 for ($i = 0; $i < count($array); $i++) {
-    array_push($newArray, ($array[$i] - $i));
+    $newArray[] = $array[$i] - $i;
 }
 echo '<pre>';
 print_r($newArray);
 echo '</pre>';
 for ($i = 0; $i < 10; $i++) {
-    array_push($newArray, rand(5, 25));
+    $newArray[] = rand(5, 25);
 }
 echo '<pre>';
 print_r($newArray);
@@ -107,18 +111,11 @@ echo '<br><br>';
 
 <?php 
 echo "5. --------------", "<br>";
-$pirmas = [];
-$antras = [];
-$trecias = [];
 $abc = "ABCD";
 for ($i = 0; $i < 200; $i++) {
-    array_push($pirmas, $abc[rand(0, 3)]);
-}
-for ($i = 0; $i < 200; $i++) {
-    array_push($antras, $abc[rand(0, 3)]);
-}
-for ($i = 0; $i < 200; $i++) {
-    array_push($trecias, $abc[rand(0, 3)]);
+    $pirmas[] = $abc[rand(0, 3)];
+    $antras[] = $abc[rand(0, 3)];
+    $trecias[] = $abc[rand(0, 3)];
 }
 $newArray = [];
 for ($i = 0; $i < 200; $i++) {
@@ -139,22 +136,15 @@ echo '<br><br>';
 echo "6. --------------", "<br>";
 $pirmas = [];
 $antras = [];
-for ($i = 0; $i < 1000; $i++) {
+while (count($pirmas) < 100) {
     $naujas = rand(100, 999);
-    if (in_array($naujas, $pirmas)) {
-        continue;
-    } else {
+    if (!in_array($naujas, $pirmas)) {
     array_push($pirmas, $naujas);
-    }
-    if (count($pirmas) == 100) {
-        break;
     }
 }
 for ($i = 0; $i < 1000; $i++) {
     $naujas = rand(100, 999);
-    if (in_array($naujas, $antras)) {
-        continue;
-    } else {
+    if (!in_array($naujas, $antras)) {
     array_push($antras, $naujas);
     }
     if (count($antras) == 100) {
@@ -226,7 +216,7 @@ echo '</pre>';
 echo '<br><br>';
 ?>
 
-<?php 
+<!-- <?php 
 echo "11. --------------", "<br>";
 $array = [];
 for ($i = 0; $i < 1000; $i++) {
@@ -273,5 +263,11 @@ for ($i = 51; $i < 100; $i++) {
     $antraSuma += $newArray[$i];
 }
 echo $pirmaSuma, "<br>", $antraSuma;
+$z = 0;
+while (($pirmaSuma - $antraSuma > 30 || $pirmaSuma - $antraSuma < -30) && $z < 100) {
+    [$newArray[$z], $newArray[99 - $z]] = [$newArray[99 - $z], $newArray[$z]];
+    $z++;
+}
+echo $pirmaSuma, "<br>", $antraSuma;
 echo '<br><br>';
-?>
+?> -->
