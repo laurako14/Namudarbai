@@ -38,6 +38,19 @@ for ($i = 0; $i < mb_strlen($x); $i++) {
 }
 }
 randomString();
+
+$kodas = md5(time());
+_d($kodas);
+
+preg_replace_callback('/\d+/', function($d) {
+    _d($d);
+    echo insert($d[0]);
+}, $kodas);
+$pakeistasKodas = preg_replace_callback('/\d+/', function($d) {
+    _d($d);
+    echo '<h1 style="display:inline;">'.$d[0].'</h1>';
+}, $kodas);
+echo $pakeistasKodas;
 echo '<br><br>';
 ?>
 
@@ -103,8 +116,7 @@ function randomLength($int) {
             $randomArray[$i] = rand(0, 10);
         } else {
             if ($int > 0) {
-                // u$randomArray[$i] = [];
-                $randomArray[$i][] = randomLength($int - 1);
+                $randomArray[$i] = randomLength($int - 1);
             } else {
                 $randomArray[] = 0;
             }
