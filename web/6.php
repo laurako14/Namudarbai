@@ -8,23 +8,28 @@
 </head>
 <body 
     <?php 
-    if (isset($_GET['color'])) {
-        echo "style='background-color: green;'";
-    } 
-    if (isset($_POST['post'])) {
+    // if (!empty($_GET)) {
+    //     echo "style='background-color: green;'";
+    //     header("refresh:5;url=http://localhost/Namudarbai/web/6.php");
+    // } 
+    // if (!empty($_POST)) {
+    //     echo "style='background-color: yellow;'";
+    // } 
+    _d($_SERVER['REQUEST_METHOD']);
+    // echo "style='background-color: white;'";
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "style='background-color: yellow;'";
-    } 
+    }
+    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+        echo "style='background-color: green;'";
+    }
     ?>
     >
     <form action="" method="get">
-    <input type="text" name="color" value="">
-<br>
-<input type="submit" value="Išsiųsti">
+<input type="submit" value="GET">
 </form>
 <form action="" method="post">
-<input type="text" name="post" value="">
-<br>
-<input type="submit" value="Išsiųsti">
+<input type="submit" value="POST">
 </form>
 
 

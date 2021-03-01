@@ -8,12 +8,16 @@
 </head>
 <body style='background-color: pink;'>
     
-    <?php 
-    if (isset($_POST['color'])) {
-        header("Location: http://localhost/Namudarbai/web/8/rose.php");
-    } 
-    ?>
-<form action="" method="post">
+<?php
+session_start();
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    header("Location: http://localhost/Namudarbai/web/8/rose.php");
+    die;
+}
+?>
+
+    
+<form action="http://localhost/Namudarbai/web/8/rose.php" method="post">
 <input type="text" name="color" value="">
 <br>
 <input type="submit" value="Go to rose">

@@ -1,3 +1,10 @@
+<?php 
+    if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+        header("Location: http://localhost/Namudarbai/web/8/pink.php");
+        die;
+    } 
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,11 +15,7 @@
 </head>
 <body style='background-color: #FF66CC;'>
     
-    <?php 
-    if (isset($_POST['color'])) {
-        header("Location: http://localhost/Namudarbai/web/8/pink.php");
-    } 
-    ?>
+    
 <form action="" method="post">
 <input type="text" name="color" value="">
 <br>

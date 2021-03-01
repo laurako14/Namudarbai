@@ -7,26 +7,21 @@
     <title>Web 7</title>
 </head>
 <body 
-    <?php 
-    if (isset($_GET['color'])) {
-        echo "style='background-color: green;'";
-    } 
-    if (isset($_POST['color'])) {
+<?php 
+    _d($_SERVER['REQUEST_METHOD']);
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "style='background-color: yellow;'";
-        header("refresh:3;url=http://localhost/Namudarbai/web/7.php");
-    } 
+        header("refresh:5;url=http://localhost/Namudarbai/web/7.php");
+    }
+    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+        echo "style='background-color: green;'";
+    }
     ?>
     >
     <form action="" method="get">
-Spalva
-<input type="text" name="color" value="">
-<br>
 <input type="submit" value="Išsiųsti">
 </form>
 <form action="" method="post">
-Spalva
-<input type="text" name="color" value="">
-<br>
 <input type="submit" value="Išsiųsti">
 </form>
 

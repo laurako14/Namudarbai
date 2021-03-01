@@ -12,6 +12,7 @@
     
 <?php 
 header("Location: http://localhost/Namudarbai/web/4/orange.php");
+die;
 ?>
 
 </body>

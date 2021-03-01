@@ -11,6 +11,7 @@
     <?php 
     if (isset($_GET['redirect'])) {
         header("Location: http://localhost/Namudarbai/web/5/red.php");
+        die;
     } 
     ?>
 
